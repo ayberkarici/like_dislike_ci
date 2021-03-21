@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('.likeBtn').click(function () {
+    $('.post_list').on('click','.likeBtn' , function () {
 
         let dataID = $(this).attr('data-id');
 
@@ -8,11 +8,11 @@ $(document).ready(function () {
             post_id     : dataID,
             vote_status : 1 
         }, function(resp) {
-            alert(resp)
+            $('.post_list').html(resp);
         })
     }) 
     
-    $('.dislikeBtn').click(function () {
+    $('.post_list').on('click', '.dislikeBtn' , function () {
         
         
         let dataID = $(this).attr('data-id');
@@ -21,7 +21,7 @@ $(document).ready(function () {
             post_id     : dataID,
             vote_status : -1 
         }, function(resp) {
-            alert(resp)
+            $('.post_list').html(resp);
         })
 
     }) 
