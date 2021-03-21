@@ -1,6 +1,6 @@
 <?php
 
-class Post_model extends CI_Model 
+class Vote_model extends CI_Model 
 {
     public $table;
 
@@ -8,7 +8,7 @@ class Post_model extends CI_Model
     {
         parent::__construct();
 
-        $this->table = "posts";
+        $this->table = "votes";
     }
 
     public function get($where = array())
@@ -16,8 +16,8 @@ class Post_model extends CI_Model
         return $this->db->where($where)->get($this->table)->row();
     }
 
-    public function get_all()
+    public function add($insert = array())
     {
-        return $this->db->get($this->table)->result();
+        return $this->db->insert($this->table, $insert);
     }
 }
