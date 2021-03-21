@@ -58,3 +58,6 @@ $route['giris_yap/(.*)'] = 'user/$1';
 
 $route['giris'] = "user/login";
 $route['giris/(.*)'] = 'user/$1';
+
+$route['yazi-listesi'] = "posts";
+$route['yazi-listesi/(.*)'] = 'user/$1';

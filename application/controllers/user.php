@@ -38,9 +38,14 @@ class User extends CI_Controller
             ));
 
             if ($user) {
-                echo 'giriş başarılı';
+
+                $this->session->set_userdata("user" , $user);
+
+                redirect(base_url('yazi-listesi'));
+
+
             } else {
-                $this->session->set_flashdata("error", md5($this->input->post('password')));
+                $this->session->set_flashdata("error", "Böyle bir kullanıcı bulunamadı..");
                 
                 $this->login_form();
             }
