@@ -1,6 +1,6 @@
 <?php foreach($posts as $post): ?>
         
-        <div class="well">
+        <div class="well post-item">
             <div><?php echo $post->title ?></div>
             <br>
             <div>

@@ -45,10 +45,17 @@ class Post extends CI_Controller
         ));
 
         if($vote) {
+
+            if ($vote->vote_status == $vote_status) {
+                $new_vote_status = 0;
+            } else {
+                $new_vote_status = $vote_status;
+            }
+
             $update = $this->vote_model->update(
                 array (
                     "user_id"       => $user_id,
-                    "vote_status"   => $vote_status,
+                    "vote_status"   => $new_vote_status,
                     "post_id"       => $post_id
                 ),
                 array(
@@ -67,9 +74,14 @@ class Post extends CI_Controller
             
         }
 
-        $renderData['posts'] = $this->post_model->post_list();
+/**     #containeri yeniler 
+ *      $renderData['posts'] = $this->post_model->post_list();
+ *      echo $this->load->view('renders/post_list_render', $renderData, true);  
+ */
 
-        echo $this->load->view('renders/post_list_render', $renderData, true);
+        #sadece seçilen postu yeniler
+        $renderData['post'] = $this->post_model->get_post($post_id);
+        echo $this->load->view('renders/post_render', $renderData, true);
 
     }
 
